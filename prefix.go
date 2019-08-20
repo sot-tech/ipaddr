@@ -547,9 +547,9 @@ func supernetIPv4(ps []Prefix) *Prefix {
 				n = l
 			}
 		}
-		fmt.Println(i, base, mask, n)
 	}
 	if n == 0 {
+		fmt.Println(ps[0].IP.String())
 		return nil
 	}
 	return ipToPrefix(ps[0].IP, n, IPv4PrefixLen)
