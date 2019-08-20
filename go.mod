@@ -1,3 +1,3 @@
-module github.com/mikioh/ipaddr
+module github.com/kkirsche/ipaddr
 
 go 1.12
