@@ -544,12 +544,13 @@ func supernetIPv4(ps []Prefix) *Prefix {
 		i := ipToIPv4Int(p.IP)
 		if diff := uint32((base ^ i) & mask); diff != 0 {
 			l := int(bits.LeadingZeros32(diff))
+			fmt.Printf("n=%d leading_zeros=%d diff=%d\n", n, l, diff)
 			if l < n {
 				n = l
 			}
 		}
 		
-		fmt.Printf("%s/%d of %d - n=%d l=%d\n", p.IP.String(), y, z, n, l)
+		fmt.Printf("%s/%d of %d - n=%d\n", p.IP.String(), y, z, n)
 
 	}
 	if n == 0 {
