@@ -548,7 +548,7 @@ func supernetIPv4(ps []Prefix) *Prefix {
 		}
 	}
 	if n == 0 {
-		fmt.Printf("%s/%s\n", ps[0].IP.String(), ps[0].Mask.String())
+		fmt.Printf("%s/%d of %d\n", ps[0].IP.String(), ps[0].Mask.Size())
 		return nil
 	}
 	return ipToPrefix(ps[0].IP, n, IPv4PrefixLen)
