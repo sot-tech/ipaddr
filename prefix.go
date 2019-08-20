@@ -326,7 +326,6 @@ func aggregateByBF(ps []Prefix, bfFn func([]Prefix) (int, bool), superFn func([]
 			aggrs = append(aggrs, ps[0])
 			ps = ps[1:]
 		} else {
-			fmt.Println(cands[:n])
 			aggrs = append(aggrs, *superFn(cands[:n]))
 			ps = ps[n:]
 			cont = true
@@ -540,6 +539,7 @@ func supernetIPv4(ps []Prefix) *Prefix {
 	base := ipToIPv4Int(ps[0].IP.Mask(ps[0].Mask))
 	mask := ipMaskToIPv4Int(ps[0].Mask)
 	n := ps[0].Len()
+	fmt.Println(base, mask, n)
 	for _, p := range ps[1:] {
 		i := ipToIPv4Int(p.IP)
 		if diff := uint32((base ^ i) & mask); diff != 0 {
@@ -547,6 +547,7 @@ func supernetIPv4(ps []Prefix) *Prefix {
 				n = l
 			}
 		}
+		fmt.Println(i, base, mask, n)
 	}
 	if n == 0 {
 		return nil
