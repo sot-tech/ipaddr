@@ -541,13 +541,15 @@ func supernetIPv4(ps []Prefix) *Prefix {
 	n := ps[0].Len()
 	for _, p := range ps[1:] {
 		y, z := p.Mask.Size()
-		fmt.Printf("%s/%d of %d\n", p.IP.String(), y, z)
 		i := ipToIPv4Int(p.IP)
 		if diff := uint32((base ^ i) & mask); diff != 0 {
 			if l := int(bits.LeadingZeros32(diff)); l < n {
 				n = l
 			}
 		}
+		
+		fmt.Printf("%s/%d of %d - n=%d l=%d\n", p.IP.String(), y, z, n, l)
+
 	}
 	if n == 0 {
 		return nil
