@@ -330,7 +330,7 @@ func aggregateByBF(ps []Prefix, bfFn func([]Prefix) (int, bool), superFn func([]
 			if addrs != nil {
 				aggrs = append(aggrs, *addrs)
 			} else {
-				fmt.Println(cands[:n])
+				aggrs = append(aggrs, cands[:n]...)
 			}
 			ps = ps[n:]
 			cont = true
