@@ -5,10 +5,9 @@
 package ipaddr_test
 
 import (
+	"github.com/kkirsche/ipaddr"
 	"net"
 	"testing"
-
-	"github.com/mikioh/ipaddr"
 )
 
 func toPosition(s1, s2 string) *ipaddr.Position {

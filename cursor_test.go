@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/mikioh/ipaddr"
+	"github.com/kkirsche/ipaddr"
 )
 
 func TestCursorFirstLastIP(t *testing.T) {

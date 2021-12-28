@@ -8,7 +8,7 @@ import (
 	"net"
 	"testing"
 
-	"github.com/mikioh/ipaddr"
+	"github.com/kkirsche/ipaddr"
 )
 
 var (

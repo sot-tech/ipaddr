@@ -6,13 +6,12 @@ package ipaddr_test
 
 import (
 	"bytes"
+	"github.com/kkirsche/ipaddr"
 	"math/big"
 	"net"
 	"reflect"
 	"sort"
 	"testing"
-
-	"github.com/mikioh/ipaddr"
 )
 
 type byAscending []ipaddr.Prefix
@@ -46,7 +45,7 @@ func toPrefixes(ss []string) []ipaddr.Prefix {
 	if ss == nil {
 		return nil
 	}
-	var ps []ipaddr.Prefix
+	ps := make([]ipaddr.Prefix, 0, len(ss))
 	for _, s := range ss {
 		_, n, err := net.ParseCIDR(s)
 		if err != nil {

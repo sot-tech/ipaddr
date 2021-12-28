@@ -460,7 +460,7 @@ func Summarize(first, last net.IP) []Prefix {
 const ipv4IntEOR = ipv4Int(math.MaxUint32)
 
 func summarizeIPv4(fip, lip net.IP) []Prefix {
-	var ps []Prefix
+	ps := make([]Prefix, 0, IPv4PrefixLen)
 	fi, li := ipToIPv4Int(fip), ipToIPv4Int(lip)
 	for fi.cmp(li) <= 0 {
 		n := IPv4PrefixLen
@@ -486,7 +486,7 @@ func summarizeIPv4(fip, lip net.IP) []Prefix {
 var ipv6IntEOR = ipv6Int{math.MaxUint64, math.MaxUint64}
 
 func summarizeIPv6(fip, lip net.IP) []Prefix {
-	var ps []Prefix
+	ps := make([]Prefix, 0, IPv6PrefixLen)
 	fi, li := ipToIPv6Int(fip), ipToIPv6Int(lip)
 	for fi.cmp(&li) <= 0 {
 		n := IPv6PrefixLen
@@ -551,7 +551,7 @@ func supernetIPv4(ps []Prefix) *Prefix {
 			if l < n {
 				n = l
 			}
-		}		
+		}
 	}
 	if n == 0 {
 		return nil
